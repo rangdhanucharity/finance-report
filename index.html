@@ -1140,170 +1140,6 @@
 			color: white;
 			border-color: #667eea;
 		}
-
-        /* Email Notification Styles */
-        .email-toggle {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-        
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 50px;
-            height: 24px;
-        }
-        
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        
-        .toggle-slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 24px;
-        }
-        
-        .toggle-slider:before {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        
-        input:checked + .toggle-slider {
-            background-color: #667eea;
-        }
-        
-        input:checked + .toggle-slider:before {
-            transform: translateX(26px);
-        }
-        
-        .email-actions {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .email-btn {
-            background: #17a2b8;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9em;
-            transition: all 0.3s;
-        }
-        
-        .email-btn:hover {
-            background: #138496;
-            transform: translateY(-1px);
-        }
-        
-        .email-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .email-checkbox {
-            margin-right: 8px;
-        }
-        
-        .email-member-list {
-            max-height: 200px;
-            overflow-y: auto;
-            border: 1px solid #dee2e6;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .email-member-item {
-            display: flex;
-            align-items: center;
-            padding: 5px 0;
-            border-bottom: 1px solid #f1f1f1;
-        }
-        
-        .email-member-item:last-child {
-            border-bottom: none;
-        }
-        
-        .email-member-info {
-            flex: 1;
-            margin-left: 10px;
-        }
-        
-        .email-member-name {
-            font-weight: 600;
-        }
-        
-        .email-member-email {
-            font-size: 0.85em;
-            color: #6c757d;
-        }
-        
-        .email-preview {
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 5px;
-            padding: 15px;
-            margin-top: 15px;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-        
-        .email-preview h4 {
-            margin-top: 0;
-            margin-bottom: 10px;
-            color: #495057;
-        }
-        
-        .email-preview-content {
-            font-size: 0.9em;
-            line-height: 1.4;
-        }
-        
-        /* Email Toggle in Forms */
-        .email-option {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 10px;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 5px;
-        }
-        
-        .email-option label {
-            margin-bottom: 0;
-            font-weight: normal;
-        }
-        
-        .email-option .toggle-switch {
-            transform: scale(0.8);
-        }
     </style>
 </head>
 <body>
@@ -1334,7 +1170,6 @@
                 <button class="admin-btn" onclick="showExportModal()">📤 Export Data</button>
                 <button class="admin-btn admin-only" id="manageBtn" onclick="showManageModal()">⚙️ Manage</button>
                 <button class="admin-btn admin-only recycle-bin-btn" onclick="showRecycleBinModal()">🗑️ Recycle Bin</button>
-                <button class="admin-btn admin-only" onclick="showEmailNotificationModal()">📧 Email Notifications</button>
             </div>
         </div>
 
@@ -1666,13 +1501,6 @@
                 <label for="newMemberEmail">Email Address:</label>
                 <input type="email" id="newMemberEmail" placeholder="Optional">
             </div>
-            <div class="email-option">
-                <label class="toggle-switch">
-                    <input type="checkbox" id="sendWelcomeEmail">
-                    <span class="toggle-slider"></span>
-                </label>
-                <label for="sendWelcomeEmail">Send welcome email to this member</label>
-            </div>
             <div class="form-actions">
                 <button class="btn btn-secondary" onclick="hideAddMemberModal()">Cancel</button>
                 <button class="btn btn-primary" onclick="confirmAddMember()">Add Member</button>
@@ -1698,17 +1526,6 @@
             <div class="form-group">
                 <label for="donationNote">Note (optional):</label>
                 <textarea id="donationNote" placeholder="e.g. For food drive, Anonymous"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="donorEmail">Donor Email (optional):</label>
-                <input type="email" id="donorEmail" placeholder="For sending donation receipt">
-            </div>
-            <div class="email-option">
-                <label class="toggle-switch">
-                    <input type="checkbox" id="sendDonationEmail">
-                    <span class="toggle-slider"></span>
-                </label>
-                <label for="sendDonationEmail">Send donation receipt email</label>
             </div>
             <div class="form-actions">
                 <button class="btn btn-secondary" onclick="hideDonationModal()">Cancel</button>
@@ -1846,111 +1663,6 @@
 		</div>
 	</div>
 
-    <!-- Email Notification Modal -->
-    <div id="emailNotificationModal" class="modal">
-        <div class="modal-content" style="max-width: 700px;">
-            <h3>📧 Email Notifications</h3>
-            
-            <div class="email-toggle">
-                <label class="toggle-switch">
-                    <input type="checkbox" id="emailNotificationsToggle">
-                    <span class="toggle-slider"></span>
-                </label>
-                <span>Enable Email Notifications</span>
-            </div>
-            
-            <div class="email-actions">
-                <button class="email-btn" onclick="showCustomEmailModal()">✉️ Custom Email</button>
-                <button class="email-btn" onclick="sendNewMemberNotifications()" id="newMemberEmailBtn" disabled>👤 New Member Welcome</button>
-                <button class="email-btn" onclick="sendPaymentNotifications()" id="paymentEmailBtn" disabled>💰 Payment Receipts</button>
-                <button class="email-btn" onclick="sendDonationNotifications()" id="donationEmailBtn" disabled>💝 Donation Receipts</button>
-            </div>
-            
-            <div class="form-actions">
-                <button class="btn btn-secondary" onclick="hideEmailNotificationModal()">Close</button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Custom Email Modal -->
-    <div id="customEmailModal" class="modal">
-        <div class="modal-content" style="max-width: 700px;">
-            <h3>✉️ Send Custom Email</h3>
-            
-            <div class="form-group">
-                <label for="emailRecipients">Select Recipients:</label>
-                <div class="email-member-list" id="emailRecipientsList">
-                    <!-- Email recipients list will be populated here -->
-                </div>
-                <div style="margin-top: 10px;">
-                    <button class="btn btn-secondary" onclick="selectAllEmailRecipients()">Select All</button>
-                    <button class="btn btn-secondary" onclick="deselectAllEmailRecipients()">Deselect All</button>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="emailSubject">Subject:</label>
-                <input type="text" id="emailSubject" placeholder="Enter email subject" style="width: 100%;">
-            </div>
-            
-            <div class="form-group">
-                <label for="emailBody">Message:</label>
-                <textarea id="emailBody" rows="10" placeholder="Enter your email message here..." style="width: 100%;"></textarea>
-            </div>
-            
-            <div class="email-preview" id="emailPreview" style="display: none;">
-                <h4>Email Preview:</h4>
-                <div class="email-preview-content" id="emailPreviewContent"></div>
-            </div>
-            
-            <div class="form-actions">
-                <button class="btn btn-secondary" onclick="hideCustomEmailModal()">Cancel</button>
-                <button class="btn btn-secondary" onclick="previewEmail()">Preview</button>
-                <button class="btn btn-primary" onclick="sendCustomEmail()">Send Email</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Payment Modal with Email Option -->
-    <div id="paymentModal" class="modal">
-        <div class="modal-content">
-            <h3>💰 Record Payment</h3>
-            <div class="form-group">
-                <label for="paymentMember">Member:</label>
-                <select id="paymentMember">
-                    <!-- Member options will be populated here -->
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="paymentYear">Year:</label>
-                <select id="paymentYear">
-                    <!-- Year options will be populated here -->
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="paymentMonth">Month:</label>
-                <select id="paymentMonth">
-                    <!-- Month options will be populated here -->
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="paymentAmount">Amount (৳):</label>
-                <input type="number" id="paymentAmount" placeholder="Enter amount">
-            </div>
-            <div class="email-option">
-                <label class="toggle-switch">
-                    <input type="checkbox" id="sendPaymentEmail">
-                    <span class="toggle-slider"></span>
-                </label>
-                <label for="sendPaymentEmail">Send payment receipt email</label>
-            </div>
-            <div class="form-actions">
-                <button class="btn btn-secondary" onclick="hidePaymentModal()">Cancel</button>
-                <button class="btn btn-primary" onclick="confirmAddPayment()">Record Payment</button>
-            </div>
-        </div>
-    </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -1973,10 +1685,6 @@
         const db = firebase.firestore();
         const auth = firebase.auth();
 
-        // Resend API Configuration
-        const RESEND_API_KEY = "re_GSVj5WyC_Ny8NHedegNowbrp6kzXczDzV";
-        const RESEND_API_URL = "https://api.resend.com/emails";
-
         // Enhanced data structure with Firebase integration
         let appData = {
             organization: "Rangdhanu Charity Fund",
@@ -1998,14 +1706,7 @@
                 adminContacts: [
                     { name: 'Admin 1', phone: '+8801712345678', email: 'admin1@rangdhanu.org' },
                     { name: 'Admin 2', phone: '+8801812345678', email: 'admin2@rangdhanu.org' }
-                ],
-                // NEW: Email notification settings
-                emailNotifications: {
-                    enabled: false,
-                    newMemberWelcome: true,
-                    paymentReceipts: true,
-                    donationReceipts: true
-                }
+                ]
             }
         };
 
@@ -2017,830 +1718,6 @@
         let logoutWarningTimer;
         let logoutCountdown = 300; // 5 minutes in seconds
         let logoutCountdownInterval;
-
-        // ========== RESEND EMAIL SERVICE ==========
-
-        async function sendResendEmail(recipientEmail, subject, htmlContent, textContent = null) {
-            if (!appData.settings.emailNotifications.enabled) {
-                console.log("Email notifications are disabled");
-                return { success: false, error: "Email notifications are disabled" };
-            }
-
-            if (!recipientEmail || !recipientEmail.includes('@')) {
-                console.log("Invalid recipient email:", recipientEmail);
-                return { success: false, error: "Invalid recipient email" };
-            }
-
-            try {
-                const emailData = {
-                    from: 'Rangdhanu Charity Fund <onboarding@resend.dev>',
-                    to: [recipientEmail],
-                    subject: subject,
-                    html: htmlContent,
-                    ...(textContent && { text: textContent })
-                };
-
-                const response = await fetch(RESEND_API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${RESEND_API_KEY}`
-                    },
-                    body: JSON.stringify(emailData)
-                });
-
-                if (response.ok) {
-                    const result = await response.json();
-                    console.log('Email sent successfully:', result);
-                    return { success: true, data: result };
-                } else {
-                    const errorText = await response.text();
-                    console.error('Error sending email:', response.status, errorText);
-                    return { success: false, error: `HTTP ${response.status}: ${errorText}` };
-                }
-            } catch (error) {
-                console.error('Network error sending email:', error);
-                return { success: false, error: error.message };
-            }
-        }
-
-        // Email Templates
-        const emailTemplates = {
-            welcome: (memberName) => ({
-                subject: "Welcome to Rangdhanu Charity Fund!",
-                html: `
-                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                        <h2 style="color: #667eea; text-align: center;">Welcome to Rangdhanu Charity Fund!</h2>
-                        <p>Dear ${memberName},</p>
-                        <p>Welcome to the Rangdhanu Charity Fund family! We're thrilled to have you as a member.</p>
-                        <p>As a member, you'll be contributing to our charitable activities and helping make a difference in our community. Your monthly contribution is ৳1000, payable by the 10th of each month.</p>
-                        <p>If you have any questions or need assistance, please don't hesitate to contact our admin team.</p>
-                        <p>Thank you for joining us in our mission to serve the community.</p>
-                        <br>
-                        <p>Best regards,<br>Rangdhanu Charity Fund Team</p>
-                        <hr>
-                        <p style="font-size: 12px; color: #666;">
-                            This is an automated message. Please do not reply to this email.
-                        </p>
-                    </div>
-                `,
-                text: `Welcome to Rangdhanu Charity Fund!
-
-Dear ${memberName},
-
-Welcome to the Rangdhanu Charity Fund family! We're thrilled to have you as a member.
-
-As a member, you'll be contributing to our charitable activities and helping make a difference in our community. Your monthly contribution is ৳1000, payable by the 10th of each month.
-
-If you have any questions or need assistance, please don't hesitate to contact our admin team.
-
-Thank you for joining us in our mission to serve the community.
-
-Best regards,
-Rangdhanu Charity Fund Team`
-            }),
-
-            paymentReceipt: (memberName, amount, month, year) => ({
-                subject: `Payment Receipt - Rangdhanu Charity Fund`,
-                html: `
-                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                        <h2 style="color: #667eea; text-align: center;">Payment Receipt</h2>
-                        <p>Dear ${memberName},</p>
-                        <p>This is a confirmation that we have received your payment of <strong>৳${amount}</strong> for <strong>${month} ${year}</strong>.</p>
-                        <p>Thank you for your continued support and contribution to our charitable activities.</p>
-                        <p>Your payment helps us continue our mission to serve the community.</p>
-                        <p>If you have any questions about this payment, please contact our admin team.</p>
-                        <br>
-                        <p>Best regards,<br>Rangdhanu Charity Fund Team</p>
-                        <hr>
-                        <p style="font-size: 12px; color: #666;">
-                            This is an automated receipt. Please do not reply to this email.
-                        </p>
-                    </div>
-                `,
-                text: `Payment Receipt - Rangdhanu Charity Fund
-
-Dear ${memberName},
-
-This is a confirmation that we have received your payment of ৳${amount} for ${month} ${year}.
-
-Thank you for your continued support and contribution to our charitable activities.
-
-Your payment helps us continue our mission to serve the community.
-
-If you have any questions about this payment, please contact our admin team.
-
-Best regards,
-Rangdhanu Charity Fund Team`
-            }),
-
-            donationReceipt: (donorName, amount, date) => ({
-                subject: `Donation Receipt - Rangdhanu Charity Fund`,
-                html: `
-                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                        <h2 style="color: #667eea; text-align: center;">Donation Receipt</h2>
-                        <p>Dear ${donorName},</p>
-                        <p>Thank you for your generous donation of <strong>৳${amount}</strong> to Rangdhanu Charity Fund on <strong>${date}</strong>.</p>
-                        <p>Your contribution will help us continue our charitable activities and make a positive impact in our community.</p>
-                        <p>We truly appreciate your support.</p>
-                        <p>This email serves as a receipt for your donation. If you have any questions, please contact our admin team.</p>
-                        <br>
-                        <p>Best regards,<br>Rangdhanu Charity Fund Team</p>
-                        <hr>
-                        <p style="font-size: 12px; color: #666;">
-                            This is an automated receipt. Please do not reply to this email.
-                        </p>
-                    </div>
-                `,
-                text: `Donation Receipt - Rangdhanu Charity Fund
-
-Dear ${donorName},
-
-Thank you for your generous donation of ৳${amount} to Rangdhanu Charity Fund on ${date}.
-
-Your contribution will help us continue our charitable activities and make a positive impact in our community.
-
-We truly appreciate your support.
-
-This email serves as a receipt for your donation. If you have any questions, please contact our admin team.
-
-Best regards,
-Rangdhanu Charity Fund Team`
-            })
-        };
-
-        // ========== EMAIL NOTIFICATION SYSTEM ==========
-
-        function showEmailNotificationModal() {
-            if (!requireAuth()) return;
-            
-            // Update toggle state
-            document.getElementById('emailNotificationsToggle').checked = 
-                appData.settings.emailNotifications.enabled;
-            
-            // Update button states
-            updateEmailButtonStates();
-            
-            document.getElementById('emailNotificationModal').style.display = 'flex';
-        }
-
-        function hideEmailNotificationModal() {
-            document.getElementById('emailNotificationModal').style.display = 'none';
-        }
-
-        function toggleEmailNotifications() {
-            appData.settings.emailNotifications.enabled = 
-                document.getElementById('emailNotificationsToggle').checked;
-            
-            // Save settings to Firebase
-            saveData();
-            
-            // Update button states
-            updateEmailButtonStates();
-            
-            logActivity('updated email settings', 
-                `${appData.settings.currentAdmin} ${appData.settings.emailNotifications.enabled ? 'enabled' : 'disabled'} email notifications`);
-        }
-
-        function updateEmailButtonStates() {
-            const isEnabled = appData.settings.emailNotifications.enabled;
-            const hasMembersWithEmail = appData.members.some(member => 
-                member.email && member.email !== 'Not provided' && member.email.includes('@'));
-            
-            document.getElementById('newMemberEmailBtn').disabled = !isEnabled || !hasMembersWithEmail;
-            document.getElementById('paymentEmailBtn').disabled = !isEnabled || !hasMembersWithEmail;
-            document.getElementById('donationEmailBtn').disabled = !isEnabled || !hasMembersWithEmail;
-        }
-
-        function showCustomEmailModal() {
-            if (!requireAuth()) return;
-            
-            // Populate email recipients list
-            const recipientsList = document.getElementById('emailRecipientsList');
-            recipientsList.innerHTML = '';
-            
-            appData.members.forEach(member => {
-                if (member.email && member.email !== 'Not provided' && member.email.includes('@')) {
-                    const item = document.createElement('div');
-                    item.className = 'email-member-item';
-                    item.innerHTML = `
-                        <input type="checkbox" class="email-checkbox" id="recipient-${member.id}" checked>
-                        <div class="email-member-info">
-                            <div class="email-member-name">${member.name}</div>
-                            <div class="email-member-email">${member.email}</div>
-                        </div>
-                    `;
-                    recipientsList.appendChild(item);
-                }
-            });
-            
-            // Reset form
-            document.getElementById('emailSubject').value = '';
-            document.getElementById('emailBody').value = '';
-            document.getElementById('emailPreview').style.display = 'none';
-            
-            document.getElementById('customEmailModal').style.display = 'flex';
-        }
-
-        function hideCustomEmailModal() {
-            document.getElementById('customEmailModal').style.display = 'none';
-        }
-
-        function selectAllEmailRecipients() {
-            document.querySelectorAll('.email-checkbox').forEach(checkbox => {
-                checkbox.checked = true;
-            });
-        }
-
-        function deselectAllEmailRecipients() {
-            document.querySelectorAll('.email-checkbox').forEach(checkbox => {
-                checkbox.checked = false;
-            });
-        }
-
-        function previewEmail() {
-            const subject = document.getElementById('emailSubject').value;
-            const body = document.getElementById('emailBody').value;
-            
-            if (!subject || !body) {
-                showCustomAlert('❌ Please enter both subject and message!', 'Input Error', 'warning');
-                return;
-            }
-            
-            const previewContent = document.getElementById('emailPreviewContent');
-            previewContent.innerHTML = `
-                <p><strong>Subject:</strong> ${subject}</p>
-                <p><strong>Message:</strong></p>
-                <div style="white-space: pre-wrap;">${body}</div>
-            `;
-            
-            document.getElementById('emailPreview').style.display = 'block';
-        }
-
-        async function sendCustomEmail() {
-            const subject = document.getElementById('emailSubject').value;
-            const body = document.getElementById('emailBody').value;
-            
-            if (!subject || !body) {
-                showCustomAlert('❌ Please enter both subject and message!', 'Input Error', 'warning');
-                return;
-            }
-            
-            // Get selected recipients
-            const selectedRecipients = [];
-            document.querySelectorAll('.email-checkbox').forEach(checkbox => {
-                if (checkbox.checked) {
-                    const memberId = checkbox.id.replace('recipient-', '');
-                    const member = appData.members.find(m => m.id == memberId);
-                    if (member && member.email && member.email !== 'Not provided' && member.email.includes('@')) {
-                        selectedRecipients.push({
-                            id: member.id,
-                            name: member.name,
-                            email: member.email
-                        });
-                    }
-                }
-            });
-            
-            if (selectedRecipients.length === 0) {
-                showCustomAlert('❌ Please select at least one recipient!', 'Input Error', 'warning');
-                return;
-            }
-            
-            showCustomConfirm(
-                `Send this email to ${selectedRecipients.length} recipient(s)?`,
-                'Confirm Email',
-                'primary',
-                async (confirmed) => {
-                    if (confirmed) {
-                        showLoading(`Sending emails to ${selectedRecipients.length} recipients...`);
-                        
-                        let successCount = 0;
-                        let errorCount = 0;
-                        
-                        for (const recipient of selectedRecipients) {
-                            const htmlContent = `
-                                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                                    <h2 style="color: #667eea; text-align: center;">${subject}</h2>
-                                    <p>Dear ${recipient.name},</p>
-                                    <div style="white-space: pre-wrap;">${body}</div>
-                                    <br>
-                                    <p>Best regards,<br>Rangdhanu Charity Fund Team</p>
-                                    <hr>
-                                    <p style="font-size: 12px; color: #666;">
-                                        This is an automated message. Please do not reply to this email.
-                                    </p>
-                                </div>
-                            `;
-                            
-                            const result = await sendResendEmail(recipient.email, subject, htmlContent);
-                            
-                            if (result.success) {
-                                successCount++;
-                                logActivity('sent custom email', 
-                                    `Sent custom email to ${recipient.name} (${recipient.email})`);
-                            } else {
-                                errorCount++;
-                                console.error(`Failed to send email to ${recipient.email}:`, result.error);
-                            }
-                        }
-                        
-                        hideLoading();
-                        
-                        if (errorCount === 0) {
-                            showCustomAlert(`✅ All ${successCount} emails sent successfully!`, 'Email Sent', 'success');
-                        } else {
-                            showCustomAlert(`⚠️ ${successCount} emails sent, ${errorCount} failed. Check console for details.`, 'Partial Success', 'warning');
-                        }
-                        
-                        hideCustomEmailModal();
-                    }
-                }
-            );
-        }
-
-        async function sendNewMemberNotifications() {
-            if (!appData.settings.emailNotifications.enabled) return;
-            
-            const newMembers = appData.members.filter(member => 
-                member.email && member.email !== 'Not provided' && member.email.includes('@'));
-            
-            if (newMembers.length === 0) {
-                showCustomAlert('❌ No members with valid email addresses found!', 'Email Error', 'warning');
-                return;
-            }
-            
-            showCustomConfirm(
-                `Send welcome emails to ${newMembers.length} member(s)?`,
-                'Confirm Welcome Emails',
-                'primary',
-                async (confirmed) => {
-                    if (confirmed) {
-                        showLoading(`Sending welcome emails to ${newMembers.length} members...`);
-                        
-                        let successCount = 0;
-                        let errorCount = 0;
-                        
-                        for (const member of newMembers) {
-                            const template = emailTemplates.welcome(member.name);
-                            const result = await sendResendEmail(member.email, template.subject, template.html, template.text);
-                            
-                            if (result.success) {
-                                successCount++;
-                                logActivity('sent welcome email', 
-                                    `Sent welcome email to ${member.name} (${member.email})`);
-                            } else {
-                                errorCount++;
-                                console.error(`Failed to send welcome email to ${member.email}:`, result.error);
-                            }
-                        }
-                        
-                        hideLoading();
-                        
-                        if (errorCount === 0) {
-                            showCustomAlert(`✅ All ${successCount} welcome emails sent successfully!`, 'Emails Sent', 'success');
-                        } else {
-                            showCustomAlert(`⚠️ ${successCount} welcome emails sent, ${errorCount} failed. Check console for details.`, 'Partial Success', 'warning');
-                        }
-                    }
-                }
-            );
-        }
-
-        async function sendPaymentNotifications() {
-            if (!appData.settings.emailNotifications.enabled) return;
-            
-            // Get members with recent payments
-            const today = new Date();
-            const membersWithPayments = [];
-            
-            Object.keys(appData.years).sort().forEach(year => {
-                const yearData = appData.years[year];
-                yearData.monthDates.forEach((monthDateString, index) => {
-                    const monthDate = new Date(monthDateString);
-                    const nextMonth = new Date(monthDate.getFullYear(), monthDate.getMonth() + 1, 1);
-                    
-                    // Check if this is the current month
-                    if (today >= monthDate && today < nextMonth) {
-                        appData.members.forEach(member => {
-                            const payment = appData.payments[member.id]?.[year]?.[index];
-                            if (payment && parseFloat(payment) > 0 && 
-                                member.email && member.email !== 'Not provided' && member.email.includes('@')) {
-                                membersWithPayments.push({
-                                    member: member,
-                                    amount: payment,
-                                    month: yearData.months[index],
-                                    year: year
-                                });
-                            }
-                        });
-                    }
-                });
-            });
-            
-            if (membersWithPayments.length === 0) {
-                showCustomAlert('❌ No recent payments found to send receipts for!', 'Email Error', 'warning');
-                return;
-            }
-            
-            showCustomConfirm(
-                `Send payment receipts to ${membersWithPayments.length} member(s)?`,
-                'Confirm Payment Receipts',
-                'primary',
-                async (confirmed) => {
-                    if (confirmed) {
-                        showLoading(`Sending payment receipts to ${membersWithPayments.length} members...`);
-                        
-                        let successCount = 0;
-                        let errorCount = 0;
-                        
-                        for (const item of membersWithPayments) {
-                            const template = emailTemplates.paymentReceipt(item.member.name, item.amount, item.month, item.year);
-                            const result = await sendResendEmail(item.member.email, template.subject, template.html, template.text);
-                            
-                            if (result.success) {
-                                successCount++;
-                                logActivity('sent payment receipt', 
-                                    `Sent payment receipt to ${item.member.name} (${item.member.email})`);
-                            } else {
-                                errorCount++;
-                                console.error(`Failed to send payment receipt to ${item.member.email}:`, result.error);
-                            }
-                        }
-                        
-                        hideLoading();
-                        
-                        if (errorCount === 0) {
-                            showCustomAlert(`✅ All ${successCount} payment receipts sent successfully!`, 'Emails Sent', 'success');
-                        } else {
-                            showCustomAlert(`⚠️ ${successCount} payment receipts sent, ${errorCount} failed. Check console for details.`, 'Partial Success', 'warning');
-                        }
-                    }
-                }
-            );
-        }
-
-        async function sendDonationNotifications() {
-            if (!appData.settings.emailNotifications.enabled) return;
-            
-            // Get recent donations (last 30 days)
-            const thirtyDaysAgo = new Date();
-            thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-            
-            const recentDonations = appData.donations.filter(donation => {
-                const donationDate = new Date(donation.date);
-                return donationDate >= thirtyDaysAgo && 
-                       donation.name && 
-                       donation.email && 
-                       donation.email.includes('@');
-            });
-            
-            if (recentDonations.length === 0) {
-                showCustomAlert('❌ No recent donations with valid email addresses found!', 'Email Error', 'warning');
-                return;
-            }
-            
-            showCustomConfirm(
-                `Send donation receipts to ${recentDonations.length} donor(s)?`,
-                'Confirm Donation Receipts',
-                'primary',
-                async (confirmed) => {
-                    if (confirmed) {
-                        showLoading(`Sending donation receipts to ${recentDonations.length} donors...`);
-                        
-                        let successCount = 0;
-                        let errorCount = 0;
-                        
-                        for (const donation of recentDonations) {
-                            const template = emailTemplates.donationReceipt(donation.name, donation.amount, donation.date);
-                            const result = await sendResendEmail(donation.email, template.subject, template.html, template.text);
-                            
-                            if (result.success) {
-                                successCount++;
-                                logActivity('sent donation receipt', 
-                                    `Sent donation receipt to ${donation.name} (${donation.email})`);
-                            } else {
-                                errorCount++;
-                                console.error(`Failed to send donation receipt to ${donation.email}:`, result.error);
-                            }
-                        }
-                        
-                        hideLoading();
-                        
-                        if (errorCount === 0) {
-                            showCustomAlert(`✅ All ${successCount} donation receipts sent successfully!`, 'Emails Sent', 'success');
-                        } else {
-                            showCustomAlert(`⚠️ ${successCount} donation receipts sent, ${errorCount} failed. Check console for details.`, 'Partial Success', 'warning');
-                        }
-                    }
-                }
-            );
-        }
-
-        // ========== AUTO-EMAIL TRIGGERS ==========
-
-        // Modified confirmAddMember to optionally send welcome email
-        async function confirmAddMember() {
-            const name = document.getElementById('newMemberName').value.trim();
-            const phone = document.getElementById('newMemberPhone').value.trim();
-            const email = document.getElementById('newMemberEmail').value.trim();
-            const sendEmail = document.getElementById('sendWelcomeEmail').checked;
-            
-            if (name) {
-                const newId = Math.max(...appData.members.map(m => m.id), 0) + 1;
-                const newMember = {
-                    id: newId,
-                    name: name,
-                    phone: phone || 'Not provided',
-                    email: email || 'Not provided',
-                    joinDate: new Date().toISOString().split('T')[0]
-                };
-                
-                appData.members.push(newMember);
-                
-                appData.payments[newId] = {};
-                Object.keys(appData.years).forEach(year => {
-                    appData.payments[newId][year] = Array(appData.years[year].months.length).fill(null);
-                });
-                
-                // Save to Firebase
-                await saveMember(newMember);
-                // Also save the new empty payment record
-                Object.keys(appData.years).forEach(year => {
-                    savePayment(newId, year, appData.payments[newId][year]);
-                });
-                
-                renderYears();
-                
-                logActivity('added a new member', `Added member: ${name} (Phone: ${phone}, Email: ${email})`);
-                
-                // Send welcome email if requested and notifications are enabled
-                if (sendEmail && appData.settings.emailNotifications.enabled && 
-                    appData.settings.emailNotifications.newMemberWelcome &&
-                    email && email !== 'Not provided' && email.includes('@')) {
-                    
-                    showLoading('Sending welcome email...');
-                    const template = emailTemplates.welcome(name);
-                    const result = await sendResendEmail(email, template.subject, template.html, template.text);
-                    
-                    hideLoading();
-                    
-                    if (result.success) {
-                        logActivity('sent welcome email', `Sent welcome email to ${name} (${email})`);
-                    } else {
-                        console.error('Failed to send welcome email:', result.error);
-                        showCustomAlert('⚠️ Member added but email failed to send. Check console for details.', 'Partial Success', 'warning');
-                    }
-                }
-                
-                hideAddMemberModal();
-                showCustomAlert('✅ Member added successfully!', 'Success', 'success');
-            } else {
-                showCustomAlert('❌ Please enter member name!', 'Input Error', 'warning');
-            }
-        }
-
-        // Show payment modal with email option
-        function showPaymentModal() {
-            if (!requireAuth()) return;
-            
-            const memberSelect = document.getElementById('paymentMember');
-            const yearSelect = document.getElementById('paymentYear');
-            const monthSelect = document.getElementById('paymentMonth');
-            
-            // Clear previous options
-            memberSelect.innerHTML = '';
-            yearSelect.innerHTML = '';
-            monthSelect.innerHTML = '';
-            
-            // Populate member options
-            appData.members.forEach(member => {
-                const option = document.createElement('option');
-                option.value = member.id;
-                option.textContent = member.name;
-                memberSelect.appendChild(option);
-            });
-            
-            // Populate year options
-            Object.keys(appData.years).sort().forEach(year => {
-                const option = document.createElement('option');
-                option.value = year;
-                option.textContent = year;
-                yearSelect.appendChild(option);
-            });
-            
-            // Populate month options when year changes
-            yearSelect.onchange = function() {
-                monthSelect.innerHTML = '';
-                const year = this.value;
-                if (year && appData.years[year]) {
-                    appData.years[year].months.forEach((month, index) => {
-                        const option = document.createElement('option');
-                        option.value = index;
-                        option.textContent = month;
-                        monthSelect.appendChild(option);
-                    });
-                }
-            };
-            
-            // Trigger change to populate months for default year
-            if (yearSelect.options.length > 0) {
-                yearSelect.dispatchEvent(new Event('change'));
-            }
-            
-            // Reset form
-            document.getElementById('paymentAmount').value = '';
-            document.getElementById('sendPaymentEmail').checked = true;
-            
-            document.getElementById('paymentModal').style.display = 'flex';
-        }
-
-        function hidePaymentModal() {
-            document.getElementById('paymentModal').style.display = 'none';
-        }
-
-        async function confirmAddPayment() {
-            const memberId = parseInt(document.getElementById('paymentMember').value);
-            const year = document.getElementById('paymentYear').value;
-            const monthIndex = parseInt(document.getElementById('paymentMonth').value);
-            const amount = parseFloat(document.getElementById('paymentAmount').value);
-            const sendEmail = document.getElementById('sendPaymentEmail').checked;
-            
-            if (!memberId || !year || isNaN(monthIndex) || !amount) {
-                showCustomAlert('❌ Please fill all required fields!', 'Input Error', 'warning');
-                return;
-            }
-            
-            const member = appData.members.find(m => m.id === memberId);
-            const monthName = appData.years[year].months[monthIndex];
-            
-            // Update payment
-            if (!appData.payments[memberId]) {
-                appData.payments[memberId] = {};
-            }
-            if (!appData.payments[memberId][year]) {
-                appData.payments[memberId][year] = Array(appData.years[year].months.length).fill(null);
-            }
-            
-            appData.payments[memberId][year][monthIndex] = amount;
-            
-            // Save to Firebase
-            await savePayment(memberId, year, appData.payments[memberId][year]);
-            
-            renderYearTable(year);
-            updateDashboard();
-            
-            logActivity('added payment', 
-                `${appData.settings.currentAdmin} added payment for ${member.name} (Year: ${year}, Month: ${monthName}, Amount: ৳${amount})`);
-            
-            // Send payment receipt if requested and notifications are enabled
-            if (sendEmail && appData.settings.emailNotifications.enabled && 
-                appData.settings.emailNotifications.paymentReceipts &&
-                member.email && member.email !== 'Not provided' && member.email.includes('@')) {
-                
-                showLoading('Sending payment receipt...');
-                const template = emailTemplates.paymentReceipt(member.name, amount, monthName, year);
-                const result = await sendResendEmail(member.email, template.subject, template.html, template.text);
-                
-                hideLoading();
-                
-                if (result.success) {
-                    logActivity('sent payment receipt', `Sent payment receipt to ${member.name} (${member.email})`);
-                } else {
-                    console.error('Failed to send payment receipt:', result.error);
-                    showCustomAlert('⚠️ Payment recorded but email failed to send. Check console for details.', 'Partial Success', 'warning');
-                }
-            }
-            
-            hidePaymentModal();
-            showCustomAlert('✅ Payment recorded successfully!', 'Success', 'success');
-            
-            // Reset inactivity timer on any admin action
-            resetInactivityTimer();
-        }
-
-        // Modified updatePayment to optionally send payment receipt
-        async function updatePayment(memberId, year, monthIndex, value) {
-            if (!appData.settings.isAuthenticated) {
-                showCustomAlert('🔐 Admin access required to modify payments!', 'Authorization Required', 'danger');
-                return;
-            }
-            
-            if (!appData.payments[memberId]) {
-                appData.payments[memberId] = {};
-            }
-            if (!appData.payments[memberId][year]) {
-                appData.payments[memberId][year] = Array(appData.years[year].months.length).fill(null);
-            }
-            
-            const oldValue = appData.payments[memberId][year][monthIndex];
-            appData.payments[memberId][year][monthIndex] = value ? parseFloat(value) : null;
-            
-            const member = appData.members.find(m => m.id === memberId);
-            const monthName = appData.years[year].months[monthIndex];
-            
-            // Save to Firebase
-            await savePayment(memberId, year, appData.payments[memberId][year]);
-            
-            renderYearTable(year);
-            updateDashboard();
-            
-            if (oldValue !== appData.payments[memberId][year][monthIndex]) {
-                const action = appData.payments[memberId][year][monthIndex] ? 
-                    `added payment for ${monthName}` : `removed payment for ${monthName}`;
-                
-                logActivity('updated payment', 
-                    `${appData.settings.currentAdmin} ${action} for ${member.name} (Year: ${year}, Amount: ৳${value || 0})`);
-                
-                // Ask admin if they want to send email for payment
-                if (appData.payments[memberId][year][monthIndex] && 
-                    appData.settings.emailNotifications.enabled && 
-                    appData.settings.emailNotifications.paymentReceipts &&
-                    member.email && member.email !== 'Not provided' && member.email.includes('@')) {
-                    
-                    showCustomConfirm(
-                        `Send payment receipt email to ${member.name}?`,
-                        'Send Email Confirmation',
-                        'primary',
-                        async (confirmed) => {
-                            if (confirmed) {
-                                showLoading('Sending payment receipt...');
-                                const template = emailTemplates.paymentReceipt(member.name, value, monthName, year);
-                                const result = await sendResendEmail(member.email, template.subject, template.html, template.text);
-                                
-                                hideLoading();
-                                
-                                if (result.success) {
-                                    logActivity('sent payment receipt', `Sent payment receipt to ${member.name} (${member.email})`);
-                                    showCustomAlert('✅ Payment receipt sent successfully!', 'Email Sent', 'success');
-                                } else {
-                                    console.error('Failed to send payment receipt:', result.error);
-                                    showCustomAlert('❌ Payment recorded but email failed to send. Check console for details.', 'Email Error', 'warning');
-                                }
-                            }
-                        }
-                    );
-                }
-            }
-            
-            // Reset inactivity timer on any admin action
-            resetInactivityTimer();
-        }
-
-        // Modified confirmAddDonation to optionally send donation receipt
-        async function confirmAddDonation() {
-            const date = document.getElementById('donationDate').value;
-            const name = document.getElementById('donorName').value.trim();
-            const amount = parseFloat(document.getElementById('donationAmount').value);
-            const note = document.getElementById('donationNote').value.trim();
-            const email = document.getElementById('donorEmail').value.trim();
-            const sendEmail = document.getElementById('sendDonationEmail').checked;
-            
-            if (!date || !name || !amount) {
-                showCustomAlert('❌ Please enter Date, Donor Name, and Amount.', 'Input Error', 'warning');
-                return;
-            }
-
-            const donation = { date, name, amount, note: note || '', email: email || '' };
-            
-            // Save to Firebase, which returns the new Document ID
-            const newId = await saveDonation(donation);
-            donation.id = newId; // Assign the new Firebase document ID to the local object
-
-            appData.donations.push(donation);
-            
-            renderDonations();
-            updateDashboard();
-            updateFinance();
-            
-            logActivity('added donation', 
-                `${appData.settings.currentAdmin} added donation from ${name} (Amount: ৳${amount}, Date: ${date})`);
-
-            // Send donation receipt if requested and notifications are enabled
-            if (sendEmail && appData.settings.emailNotifications.enabled && 
-                appData.settings.emailNotifications.donationReceipts &&
-                email && email.includes('@')) {
-                
-                showLoading('Sending donation receipt...');
-                const template = emailTemplates.donationReceipt(name, amount, date);
-                const result = await sendResendEmail(email, template.subject, template.html, template.text);
-                
-                hideLoading();
-                
-                if (result.success) {
-                    logActivity('sent donation receipt', `Sent donation receipt to ${name} (${email})`);
-                } else {
-                    console.error('Failed to send donation receipt:', result.error);
-                    showCustomAlert('⚠️ Donation recorded but email failed to send. Check console for details.', 'Partial Success', 'warning');
-                }
-            }
-
-            hideDonationModal();
-            showCustomAlert('✅ Donation successfully recorded!', 'Success', 'success');
-            
-            // Reset inactivity timer on any admin action
-            resetInactivityTimer();
-        }
 
         // ========== SEARCH AND SORT FUNCTIONALITY ==========
 
@@ -3732,9 +2609,6 @@ Rangdhanu Charity Fund Team`
                 
                 // Setup search functionality
                 setupSearchFunctionality();
-                
-                // Setup email notification toggle listener
-                document.getElementById('emailNotificationsToggle').addEventListener('change', toggleEmailNotifications);
 
                 hideLoading();
                 showSyncStatus('Connected to cloud database!', 'success');
@@ -4530,7 +3404,45 @@ Rangdhanu Charity Fund Team`
             document.getElementById('newMemberEmail').value = '';
         }
 
-        // Modified confirmAddMember is above in the email section
+        async function confirmAddMember() {
+            const name = document.getElementById('newMemberName').value.trim();
+            const phone = document.getElementById('newMemberPhone').value.trim();
+            const email = document.getElementById('newMemberEmail').value.trim();
+            
+            if (name) {
+                const newId = Math.max(...appData.members.map(m => m.id), 0) + 1;
+                const newMember = {
+                    id: newId,
+                    name: name,
+                    phone: phone || 'Not provided',
+                    email: email || 'Not provided',
+                    joinDate: new Date().toISOString().split('T')[0]
+                };
+                
+                appData.members.push(newMember);
+                
+                appData.payments[newId] = {};
+                Object.keys(appData.years).forEach(year => {
+                    appData.payments[newId][year] = Array(appData.years[year].months.length).fill(null);
+                });
+                
+                // Save to Firebase
+                await saveMember(newMember);
+                // Also save the new empty payment record
+                Object.keys(appData.years).forEach(year => {
+                    savePayment(newId, year, appData.payments[newId][year]);
+                });
+                
+                renderYears();
+                
+                logActivity('added a new member', `Added member: ${name} (Phone: ${phone}, Email: ${email})`);
+                
+                hideAddMemberModal();
+                showCustomAlert('✅ Member added successfully!', 'Success', 'success');
+            } else {
+                showCustomAlert('❌ Please enter member name!', 'Input Error', 'warning');
+            }
+        }
 
         function showManageMembersModal() {
             if (!requireAuth()) return;
@@ -4639,7 +3551,42 @@ Rangdhanu Charity Fund Team`
 
         // ========== PAYMENT MANAGEMENT ==========
 
-        // Modified updatePayment is above in the email section
+        async function updatePayment(memberId, year, monthIndex, value) {
+            if (!appData.settings.isAuthenticated) {
+                showCustomAlert('🔐 Admin access required to modify payments!', 'Authorization Required', 'danger');
+                return;
+            }
+            
+            if (!appData.payments[memberId]) {
+                appData.payments[memberId] = {};
+            }
+            if (!appData.payments[memberId][year]) {
+                appData.payments[memberId][year] = Array(appData.years[year].months.length).fill(null);
+            }
+            
+            const oldValue = appData.payments[memberId][year][monthIndex];
+            appData.payments[memberId][year][monthIndex] = value ? parseFloat(value) : null;
+            
+            const member = appData.members.find(m => m.id === memberId);
+            const monthName = appData.years[year].months[monthIndex];
+            
+            // Save to Firebase
+            await savePayment(memberId, year, appData.payments[memberId][year]);
+            
+            renderYearTable(year);
+            updateDashboard();
+            
+            if (oldValue !== appData.payments[memberId][year][monthIndex]) {
+                const action = appData.payments[memberId][year][monthIndex] ? 
+                    `added payment for ${monthName}` : `removed payment for ${monthName}`;
+                
+                logActivity('updated payment', 
+                    `${appData.settings.currentAdmin} ${action} for ${member.name} (Year: ${year}, Amount: ৳${value || 0})`);
+            }
+            
+            // Reset inactivity timer on any admin action
+            resetInactivityTimer();
+        }
 
         // ========== DONATION MANAGEMENT ==========
 
@@ -4649,7 +3596,6 @@ Rangdhanu Charity Fund Team`
             document.getElementById('donorName').value = '';
             document.getElementById('donationAmount').value = '';
             document.getElementById('donationNote').value = '';
-            document.getElementById('donorEmail').value = '';
             document.getElementById('donationModal').style.display = 'flex';
         }
 
@@ -4657,7 +3603,38 @@ Rangdhanu Charity Fund Team`
             document.getElementById('donationModal').style.display = 'none';
         }
 
-        // Modified confirmAddDonation is above in the email section
+        async function confirmAddDonation() {
+            const date = document.getElementById('donationDate').value;
+            const name = document.getElementById('donorName').value.trim();
+            const amount = parseFloat(document.getElementById('donationAmount').value);
+            const note = document.getElementById('donationNote').value.trim();
+            
+            if (!date || !name || !amount) {
+                showCustomAlert('❌ Please enter Date, Donor Name, and Amount.', 'Input Error', 'warning');
+                return;
+            }
+
+            const donation = { date, name, amount, note: note || '' };
+            
+            // Save to Firebase, which returns the new Document ID
+            const newId = await saveDonation(donation);
+            donation.id = newId; // Assign the new Firebase document ID to the local object
+
+            appData.donations.push(donation);
+            
+            renderDonations();
+            updateDashboard();
+            updateFinance();
+            
+            logActivity('added donation', 
+                `${appData.settings.currentAdmin} added donation from ${name} (Amount: ৳${amount}, Date: ${date})`);
+
+            hideDonationModal();
+            showCustomAlert('✅ Donation successfully recorded!', 'Success', 'success');
+            
+            // Reset inactivity timer on any admin action
+            resetInactivityTimer();
+        }
 
         function renderDonations() {
             const donationsBody = document.getElementById('donationsBody');
