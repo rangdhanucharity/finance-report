@@ -1259,6 +1259,29 @@
 		.table-container th:not(:first-child):not(:last-child) {
 		    text-align: center;
 		}		
+		.member-item.paid {
+		    border-left-color: #28a745;
+		    background: #d4edda;
+		    color: #000000 !important; /* Force black text */
+		}
+		
+		.member-item.due {
+		    border-left-color: #dc3545;
+		    background: #f8d7da;
+		    color: #000000 !important; /* Force black text */
+		}
+		
+		/* Also ensure the summary cards in reports have proper text contrast */
+		.summary-card.clickable-header {
+		    color: var(--text-primary) !important;
+		}
+		
+		.summary-card.clickable-header h3,
+		.summary-card.clickable-header .value,
+		.summary-card.clickable-header small {
+		    color: inherit !important;
+		}
+		
 		
     </style>
 </head>
@@ -4847,3 +4870,4 @@
     <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">🌙</button>
 </body>
 </html>
+
